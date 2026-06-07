@@ -1,3 +1,10 @@
+// Initialize EmailJS when the page loads
+window.addEventListener('load', function() {
+  // Initialize EmailJS with your PUBLIC KEY
+  // Get your PUBLIC KEY from: https://dashboard.emailjs.com/admin/account
+  emailjs.init('YOUR_PUBLIC_KEY_HERE'); // REPLACE WITH YOUR PUBLIC KEY
+});
+
 // Contact Form Handler
 function handleSubmit(event) {
   event.preventDefault();
@@ -29,9 +36,7 @@ function handleSubmit(event) {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
   
-  // Send email via EmailJS (free service)
-  emailjs.init('YOUR_PUBLIC_KEY'); // Get this from https://www.emailjs.com/
-  
+  // Send email via EmailJS
   const templateParams = {
     from_name: name,
     from_email: email,
@@ -40,16 +45,17 @@ function handleSubmit(event) {
     to_email: 'dishaa28dec@gmail.com'
   };
   
-  emailjs.send('service_id', 'template_id', templateParams)
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
     .then((response) => {
-      showMessage('✓ Message sent successfully! I'll get back to you soon.', 'success', formMessage);
+      console.log('Email sent successfully!', response);
+      showMessage('✓ Message sent successfully! I\'ll get back to you soon.', 'success', formMessage);
       form.reset();
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send Message';
     })
     .catch((error) => {
       console.error('EmailJS Error:', error);
-      showMessage('Failed to send. Please try emailing me directly at dishaa28dec@gmail.com', 'error', formMessage);
+      showMessage('Failed to send message. Please try emailing me directly at dishaa28dec@gmail.com', 'error', formMessage);
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send Message';
     });
@@ -83,9 +89,11 @@ window.addEventListener('scroll', () => {
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-});
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+}
 
 function closeMenu() {
   mobileMenu.classList.remove('open');
@@ -105,7 +113,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Observe skill cards, achievement cards, and education cards
+// Observe skill cards, achievement cards, education cards, and experience items
 document.querySelectorAll('.skill-card, .ach-card, .edu-card, .exp-item').forEach(el => {
   observer.observe(el);
 });

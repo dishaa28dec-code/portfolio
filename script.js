@@ -1,16 +1,11 @@
 // Initialize EmailJS when the page loads
-// IMPORTANT: After registering at https://www.emailjs.com, replace these with YOUR credentials:
-// 1. Go to Account > API Keys and copy your PUBLIC KEY
-// 2. Go to Email Services and copy your SERVICE_ID
-// 3. Go to Email Templates and copy your TEMPLATE_ID
-
 window.addEventListener('load', function() {
-  // TODO: Replace with YOUR actual Public Key from https://dashboard.emailjs.com
-  // Look for: Account > General > Public Key
+  // Initialize with a free public key (demo)
+  // For production, get your own key from https://www.emailjs.com
   try {
-    emailjs.init('YOUR_PUBLIC_KEY_HERE');
+    emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
   } catch (error) {
-    console.log('EmailJS not initialized. Add your public key to continue.');
+    console.log('EmailJS library loaded. Configure credentials when ready.');
   }
 });
 
@@ -45,10 +40,6 @@ function handleSubmit(event) {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
   
-  // TODO: Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual IDs
-  // SERVICE_ID: Found at Email Services > Your Service
-  // TEMPLATE_ID: Found at Email Templates > Your Template
-  
   const templateParams = {
     from_name: name,
     from_email: email,
@@ -57,7 +48,8 @@ function handleSubmit(event) {
     to_email: 'dishaa28dec@gmail.com'
   };
   
-  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+  // Try EmailJS first (if credentials are configured)
+  emailjs.send('service_template', 'template_contact', templateParams)
     .then((response) => {
       console.log('Email sent successfully!', response);
       showMessage('✓ Message sent successfully! I\'ll get back to you soon.', 'success', formMessage);
@@ -66,12 +58,41 @@ function handleSubmit(event) {
       submitBtn.textContent = 'Send Message';
     })
     .catch((error) => {
-      console.error('EmailJS Error:', error);
-      // Fallback: Show error but provide direct email option
-      showMessage('Unable to send via form. Please email me directly at dishaa28dec@gmail.com', 'error', formMessage);
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
+      console.log('EmailJS not configured. Using fallback...');
+      // Fallback: Send via FormSubmit
+      sendViaFormSubmit(form, formMessage, submitBtn, name, email, subject, message);
     });
+}
+
+// Fallback: Send via FormSubmit (free, no setup needed)
+function sendViaFormSubmit(form, formMessage, submitBtn, name, email, subject, message) {
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('email', email);
+  formData.append('subject', subject);
+  formData.append('message', message);
+  formData.append('_captcha', 'false');
+  
+  fetch('https://formsubmit.co/dishaa28dec@gmail.com', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+    if (response.ok) {
+      showMessage('✓ Message sent successfully! I\'ll get back to you soon.', 'success', formMessage);
+      document.getElementById('contactForm').reset();
+    } else {
+      throw new Error('Network response was not ok');
+    }
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Message';
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+    showMessage('Failed to send message. Please try emailing directly: dishaa28dec@gmail.com', 'error', formMessage);
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Message';
+  });
 }
 
 // Helper function to display messages

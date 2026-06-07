@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Disha Das — Business Development & SaaS Sales</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js"></script>
 <style>
   :root {
     --navy:       #09111f;
@@ -151,6 +152,8 @@
     border-radius: 2px;
     text-decoration: none;
     transition: background 0.25s, transform 0.2s;
+    border: none;
+    cursor: pointer;
   }
   .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
   .btn-outline {
@@ -713,7 +716,7 @@
   <div class="about-grid">
     <div class="about-text">
       <h2>A Sales Professional<br>Who <em>Thinks</em> Like an Analyst</h2>
-      <p>I bring a rare combination of <strong>consultative selling</strong> and <strong>structured business analysis</strong> — I don't just pitch, I diagnose. My approach starts with understanding your business challenge, mapping stakeholder needs, and designing solutions that drive measurable ROI.</p>
+      <p>I bring a rare combination of <strong>consultative selling</strong> and <strong>structured business analysis</strong> — I don't just pitch, I diagnose. My approach starts with understanding your business, not selling features.</p>
       <p>Across SaaS platforms, digital media, and co-working real estate, I've consistently built high-trust relationships with C-suite buyers, managed complex pipelines, and delivered measurable revenue impact.</p>
       <p>I'm a <strong>fast starter</strong> — immediate joiner, on-site, hybrid or remote ready, and energized by teams who move fast and care deeply about outcomes.</p>
       <div class="avail-badge">Open to Opportunities · Immediate Joiner</div>
@@ -767,8 +770,8 @@
       <div>
         <ul class="exp-bullets">
           <li>Served as <span class="exp-highlight">primary SPOC</span> for key enterprise SaaS &amp; digital media accounts, owning the full sales lifecycle from prospecting to activation and strategic account management.</li>
-          <li>Identified decision-makers via LinkedIn and prospecting tools; delivered personalized multi-channel outreach driving <span class="exp-highlight">qualified meeting pipelines</span> from high-intent accounts.</li>
-          <li>Conducted in-depth client need analysis and business requirements gathering, proposing tailored digital engagement solutions that drove a <span class="exp-highlight">20% increase in account revenue</span>.</li>
+          <li>Identified decision-makers via LinkedIn and prospecting tools; delivered personalized multi-channel outreach driving <span class="exp-highlight">qualified meeting pipelines</span> from target accounts.</li>
+          <li>Conducted in-depth client need analysis and business requirements gathering, proposing tailored digital engagement solutions that drove a <span class="exp-highlight">20% increase in revenue</span> for existing accounts.</li>
           <li>Executed multi-touch outreach strategy across email, phone &amp; LinkedIn, scheduling qualified meetings consistently.</li>
           <li>Standardized SOW validation checklists and onboarding processes, reducing client escalations and improving <span class="exp-highlight">pipeline handover accuracy</span>.</li>
           <li>Collaborated cross-functionally with Creative, Tech &amp; Content teams to deploy solutions aligned with client KPIs and campaign objectives.</li>
@@ -784,8 +787,8 @@
       </div>
       <div>
         <ul class="exp-bullets">
-          <li>Prospected and qualified a <span class="exp-highlight">40+ account pipeline</span> with ticket sizes of ₹15–25 Lac monthly, targeting C-suite buyers across industries via LinkedIn and ZoomInfo.</li>
-          <li>Translated complex client requirements into tailored managed-office solutions through structured business analysis; handled objection resolution and <span class="exp-highlight">ROI-based presentations</span>.</li>
+          <li>Prospected and qualified a <span class="exp-highlight">40+ account pipeline</span> with ticket sizes of ₹15–25 Lac monthly, targeting C-suite buyers across industries via LinkedIn and warm outreach.</li>
+          <li>Translated complex client requirements into tailored managed-office solutions through structured business analysis; handled objection resolution and <span class="exp-highlight">ROI-driven presentations</span> for enterprise deals.</li>
           <li>Developed process documentation and gap analysis reports to streamline pre-sales workflows and improve conversion velocity.</li>
           <li>Ensured <span class="exp-highlight">100% on-time handover</span> from contract signing to space activation, maintaining seamless transition and strong client satisfaction.</li>
           <li>Streamlined client servicing and outreach protocols, reducing response turnaround by <span class="exp-highlight">40%</span> and improving funnel conversion velocity.</li>
@@ -950,7 +953,7 @@
   <div class="contact-wrap">
     <div class="contact-left">
       <h2>Ready to Drive<br><em>Results Together?</em></h2>
-      <p>I'm actively looking for opportunities in SaaS Sales, Business Development, and Pre-Sales roles. If you're building a team that values structured thinking, relationship-first selling, and data-driven decision-making — let's connect!</p>
+      <p>I'm actively looking for opportunities in SaaS Sales, Business Development, and Pre-Sales roles. If you're building a team that values structured thinking, relationship-first selling, and measurable impact, let's talk.</p>
       <ul class="contact-links">
         <li>
           <a href="mailto:dishaa28dec@gmail.com">
@@ -999,23 +1002,19 @@
             <input type="text" name="name" placeholder="Jane Smith" required />
           </div>
           <div class="form-group">
-            <label>Company</label>
-            <input type="text" name="company" placeholder="Acme Corp" />
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="jane@company.com" required />
           </div>
         </div>
         <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" name="email" placeholder="jane@company.com" required />
-        </div>
-        <div class="form-group">
           <label>Subject</label>
-          <input type="text" name="subject" placeholder="Job Opportunity / Collaboration" />
+          <input type="text" name="subject" placeholder="Let's discuss an opportunity" required />
         </div>
         <div class="form-group">
           <label>Message</label>
-          <textarea name="message" placeholder="Tell me about the role or opportunity…" required></textarea>
+          <textarea name="message" placeholder="Tell me about the role or opportunity..." required></textarea>
         </div>
-        <button type="submit" class="form-submit">Send Message →</button>
+        <button type="submit" class="form-submit">Send Message</button>
       </form>
     </div>
   </div>
@@ -1025,129 +1024,11 @@
   <div class="footer-logo">DD.</div>
   <div class="footer-copy">&copy; 2026 Disha Das. All rights reserved.</div>
   <div class="footer-links">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
     <a href="https://linkedin.com/in/disha-das-media" target="_blank">LinkedIn</a>
+    <a href="mailto:dishaa28dec@gmail.com">Email</a>
   </div>
 </footer>
 
-<!-- EmailJS SDK -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
-<script type="text/javascript">
-  // Initialize EmailJS with your Public Key
-  (function(){
-    emailjs.init("3nKmKr9dJlNOWjsDh");
-  })();
-</script>
-
-<script>
-  // ─── FORM HANDLER ─────────────────────────────
-  function handleSubmit(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const formMessage = document.getElementById('formMessage');
-    const name = form.querySelector('input[name="name"]').value;
-    const company = form.querySelector('input[name="company"]').value;
-    const email = form.querySelector('input[name="email"]').value;
-    const subject = form.querySelector('input[name="subject"]').value;
-    const message = form.querySelector('textarea[name="message"]').value;
-    
-    // Validate required fields
-    if (!name || !email || !message) {
-      formMessage.className = 'form-message error';
-      formMessage.textContent = '✗ Please fill in all required fields: Name, Email, and Message';
-      return;
-    }
-    
-    // Prepare data for EmailJS
-    const templateParams = {
-      to_email: 'dishaa28dec@gmail.com',
-      from_name: name,
-      from_email: email,
-      company: company || 'Not provided',
-      subject: subject || 'New Contact Form Submission',
-      message: message,
-      reply_to: email
-    };
-    
-    // Show loading state
-    const submitBtn = form.querySelector('.form-submit');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
-    
-    // Send via EmailJS
-    emailjs.send('service_7hqn0ck', 'template_s2g8ixg', templateParams)
-      .then(function(response) {
-        formMessage.className = 'form-message success';
-        formMessage.textContent = `✓ Thank you, ${name}! Your message has been sent. I'll get back to you soon at ${email}`;
-        form.reset();
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      }, function(error) {
-        // Fallback: Store to localStorage if email service fails
-        console.log('Fallback: Storing message locally', error);
-        const storedMessages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
-        storedMessages.push({
-          name,
-          company,
-          email,
-          subject,
-          message,
-          timestamp: new Date().toISOString()
-        });
-        localStorage.setItem('contactMessages', JSON.stringify(storedMessages));
-        
-        formMessage.className = 'form-message success';
-        formMessage.textContent = `✓ Thank you, ${name}! Your message has been recorded. I'll reach out to you at ${email}`;
-        form.reset();
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      });
-  }
-  
-  // ─── HAMBURGER MENU ─────────────────────────────
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  
-  if (hamburger) {
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
-  }
-  
-  function closeMenu() {
-    mobileMenu.classList.remove('open');
-  }
-  
-  // ─── NAVBAR SCROLL EFFECT ──────────────────────
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
-  
-  // ─── INTERSECTION OBSERVER FOR ANIMATIONS ────
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-  };
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, observerOptions);
-  
-  document.querySelectorAll('.exp-item, .skill-card, .ach-card, .edu-card').forEach(el => {
-    observer.observe(el);
-  });
-</script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,8 +1,17 @@
 // Initialize EmailJS when the page loads
+// IMPORTANT: After registering at https://www.emailjs.com, replace these with YOUR credentials:
+// 1. Go to Account > API Keys and copy your PUBLIC KEY
+// 2. Go to Email Services and copy your SERVICE_ID
+// 3. Go to Email Templates and copy your TEMPLATE_ID
+
 window.addEventListener('load', function() {
-  // Initialize EmailJS with your PUBLIC KEY
-  // Get your PUBLIC KEY from: https://dashboard.emailjs.com/admin/account
-  emailjs.init('YOUR_PUBLIC_KEY_HERE'); // REPLACE WITH YOUR PUBLIC KEY
+  // TODO: Replace with YOUR actual Public Key from https://dashboard.emailjs.com
+  // Look for: Account > General > Public Key
+  try {
+    emailjs.init('YOUR_PUBLIC_KEY_HERE');
+  } catch (error) {
+    console.log('EmailJS not initialized. Add your public key to continue.');
+  }
 });
 
 // Contact Form Handler
@@ -36,7 +45,10 @@ function handleSubmit(event) {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
   
-  // Send email via EmailJS
+  // TODO: Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual IDs
+  // SERVICE_ID: Found at Email Services > Your Service
+  // TEMPLATE_ID: Found at Email Templates > Your Template
+  
   const templateParams = {
     from_name: name,
     from_email: email,
@@ -55,7 +67,8 @@ function handleSubmit(event) {
     })
     .catch((error) => {
       console.error('EmailJS Error:', error);
-      showMessage('Failed to send message. Please try emailing me directly at dishaa28dec@gmail.com', 'error', formMessage);
+      // Fallback: Show error but provide direct email option
+      showMessage('Unable to send via form. Please email me directly at dishaa28dec@gmail.com', 'error', formMessage);
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send Message';
     });

@@ -543,6 +543,7 @@
     transition: background 0.25s, transform 0.2s;
   }
   .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
   .form-message {
     padding: 12px 16px;
     border-radius: 3px;
@@ -1030,6 +1031,15 @@
   </div>
 </footer>
 
+<!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+<script type="text/javascript">
+  // Initialize EmailJS with your Public Key
+  (function(){
+    emailjs.init("3nKmKr9dJlNOWjsDh");
+  })();
+</script>
+
 <script>
   // ─── FORM HANDLER ─────────────────────────────
   function handleSubmit(event) {
@@ -1046,7 +1056,7 @@
     // Validate required fields
     if (!name || !email || !message) {
       formMessage.className = 'form-message error';
-      formMessage.textContent = 'Please fill in all required fields: Name, Email, and Message';
+      formMessage.textContent = '✗ Please fill in all required fields: Name, Email, and Message';
       return;
     }
     
@@ -1067,8 +1077,8 @@
     submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
     
-    // Send via EmailJS (using a generic service - you'll need to set up your own account)
-    emailjs.send('service_portfolio', 'template_portfolio', templateParams)
+    // Send via EmailJS
+    emailjs.send('service_7hqn0ck', 'template_s2g8ixg', templateParams)
       .then(function(response) {
         formMessage.className = 'form-message success';
         formMessage.textContent = `✓ Thank you, ${name}! Your message has been sent. I'll get back to you soon at ${email}`;
@@ -1138,14 +1148,6 @@
   document.querySelectorAll('.exp-item, .skill-card, .ach-card, .edu-card').forEach(el => {
     observer.observe(el);
   });
-</script>
-
-<!-- EmailJS SDK -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
-<script type="text/javascript">
-  (function(){
-    emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // You'll need to update this
-  })();
 </script>
 </body>
 </html>
